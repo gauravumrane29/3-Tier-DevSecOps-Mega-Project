@@ -4,13 +4,13 @@ metadata:
   name: user-management-ingress
   namespace: prod
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-prod # Keep this as is
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
-    - host: adityajaiswal.com
+    - host: rajdevops.click # Change this to your domain
       http:
         paths:
           - path: /api
@@ -27,7 +27,7 @@ spec:
                 name: frontend-svc
                 port:
                   number: 80
-    - host: www.adityajaiswal.com
+    - host: www.rajdevops.click # Add www subdomain if needed
       http:
         paths:
           - path: /api
@@ -46,6 +46,6 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - adityajaiswal.com
-        - www.adityajaiswal.com
-      secretName: adityajaiswal-co-tls
+        - rajdevops.click # Change this to your domain
+        - www.rajdevops.click # Add www subdomain if needed
+      secretName: rajdevops-click-tls # Change the secret name to match your domain
